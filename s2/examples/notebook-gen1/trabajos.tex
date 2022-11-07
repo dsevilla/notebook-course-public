@@ -1,0 +1,183 @@
+\input header.tex
+
+%-----------------------------------------------------------------------------
+%       TITLE PAGE
+%-----------------------------------------------------------------------------
+
+\lstset{
+  numbers=none
+  }
+
+
+\title[BDGE - Trabajos]%
+{Bases de Datos a Gran Escala\\%
+  Trabajos}
+
+\author{Diego Sevilla Ruiz}
+\institute[UMU]
+{
+Dpto. Ingeniería y Tecnología de Computadores\\
+Facultad de Informática\\
+Universidad de Murcia\\
+\medskip
+\href{mailto:dsevilla@um.es}{\textit{dsevilla@um.es}}
+}
+\date{2019}
+
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip1em}{}{}
+\makeatother
+
+\begin{document}
+
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+% \begin{frame}
+% \frametitle{Índice}
+% \tableofcontents[hideallsubsections]
+% \end{frame}
+
+\section{Instrucciones para realizar los trabajos}
+
+\begin{frame}[fragile,allowframebreaks]
+  \frametitle{Instrucciones para la realización de los trabajos}
+\begin{itemize}
+\item En las siguientes transparencias se incluyen los trabajos propuestos
+  para la asignatura
+\item Cada trabajo incluye el estudio de una base de datos vista en clase y
+  la importación de los datos de Stackoverflow
+\item El trabajo será \underline{\bf INDIVIDUAL}
+\item Más de un alumno podrá elegir el mismo trabajo, pero como máximo un
+  trabajo podrá ser elegido por dos alumnos
+\item Se entregará una memoria (y código, si se ha generado) en una tarea
+  abierta a tal fin
+\item La fecha de entrega será el {\bf día del examen de la asignatura}
+\item Para apuntarse a un trabajo el alumno tendrá que:
+
+  \framebreak
+
+  \begin{enumerate}
+  \item Conectarse al servidor (usuario: alumno, pass: bdge2019)
+\begin{lstlisting}[language=bash]
+$ mysql -hneuromancer.inf.um.es -P3307 \
+    -ualumno -pbdge2019 \
+    --default-char-set=utf8 \
+    --protocol=tcp trabajos
+  \end{lstlisting}
+%
+O bien si se usan los contenedores instalados:
+%
+\begin{lstlisting}[language=bash]
+$ docker run --rm -ti mysql mysql \
+    -hneuromancer.inf.um.es -ualumno \
+    -pbdge2019 --protocol=tcp -P3307 \
+    --default-character-set=utf8 trabajos
+\end{lstlisting}
+
+  \item Añadir una entrada a la tabla {\tt asignacion\_trabajos} con su
+    dni, nombre y id del trabajo elegido
+  \item Se pueden listar qué trabajos hay y cuáles quedan libres: (no se
+    muestra el campo {\tt spec}, con la especificación del trabajo)
+    %
+    \begin{lstlisting}[language=sql,basicstyle=\tiny\tt]
+mysql> select id,titulo from trabajos;
++-----+-----------------------+
+| id  | titulo                |
++-----+-----------------------+
+| T01 | Open TSDB             |
+| T02 | Apache Cassandra      |
++-----+-----------------------+
+\end{lstlisting}
+%
+\begin{lstlisting}[language=sql,basicstyle=\tiny\tt]
+mysql> select * from asignados;
++-----+-----------------------+------------+
+| id  | titulo                | nasignados |
++-----+-----------------------+------------+
+| T01 | Open TSDB             |          0 |
+| T02 | Apache Cassandra      |          0 |
++-----+-----------------------+------------+
+\end{lstlisting}
+  \end{enumerate}
+
+\framebreak
+
+\item Las tablas disponibles:
+%
+\begin{lstlisting}[language=sql]
+mysql> show tables;
++---------------------+
+| Tables_in_trabajos  |
++---------------------+
+| asignacion_trabajos |
+| asignados           |
+| trabajos            |
++---------------------+
+\end{lstlisting}
+
+\item El código de creación de la base de datos es un ejemplo de creación
+  de usuarios y de permisos, y puede verse en el {\tt git} de la asignatura
+  aquí:
+  \url{https://github.com/dsevilla/bdge/blob/19-20/addendum/trabajos/creatrabajos.sql}
+
+\end{itemize}
+
+
+\end{frame}
+
+\section{Trabajos para la asignatura BDGE}
+
+\begin{frame}
+  \frametitle{T01. Open TSDB}
+  \begin{itemize}
+  \item Pasos de instalación de la base de datos
+  \item Descripción de la base de datos, modo de funcionamiento,
+    posibilidades de modelado de datos y características (si permite
+    transacciones, framework de procesamiento map/reduce, replicación
+    multiservidor, etc.)
+  \item Mostrar cómo importar los datos de Stackoverflow
+  \item Mostrar cómo redistribuir los datos de Stackoverflow de forma
+    óptima (uso de series de datos, como si, por ejemplo, comentarios,
+    posts, etc. se ejecutaran en un stream)
+  \item Mostrar cómo se realizarían las consultas RQ1 a RQ4 de los
+    artículos vistos en la sesión~2
+  \item Realizar pruebas de eficiencia comparada con alguna de las bases de
+    datos vistas en la asignatura
+  \item \url{http://opentsdb.net/}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{T02. Apache Cassandra}
+  \begin{itemize}
+  \item Pasos de instalación de la base de datos
+  \item Descripción de la base de datos, modo de funcionamiento,
+    posibilidades de modelado de datos y características (si permite
+    transacciones, framework de procesamiento map/reduce, replicación
+    multiservidor, lenguaje de consultas CQL, etc.)
+  \item Mostrar cómo importar los datos de Stackoverflow
+  \item Mostrar cómo redistribuir los datos de Stackoverflow de forma
+    óptima (uso de agregación siguiendo el modelo de documentos)
+  \item Mostrar cómo se realizarían las consultas RQ1 a RQ4 de los
+    artículos vistos en la sesión~2
+  \item Realizar pruebas de eficiencia comparada con alguna de las bases de
+    datos vistas en la asignatura
+  \end{itemize}
+\end{frame}
+
+\end{document}
+
+%%% Local variables:
+%%% mode: LaTeX
+%%% TeX-master: "header.tex"
+%%% ispell-local-dictionary: "spanish"
+%%% fill-column: 75
+%%% TeX-parse-self: t
+%%% TeX-auto-save: t
+%%% End:
+%%% vim: expandtab shiftwidth=2 tabstop=2 ai spelllang=es_ES spell tw=80

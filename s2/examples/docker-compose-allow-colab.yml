@@ -1,0 +1,13 @@
+version: '2'
+services:
+  notebook:
+    image: "jupyter/scipy-notebook"
+    ports:
+      - "8888:8888"
+    user: root
+    environment:
+      - GRANT_SUDO=yes
+      - JUPYTER_ENABLE_LAB=yes
+    command: start-notebook.sh --allow-root --NotebookApp.allow_origin='https://colab.research.google.com' --port=8888 --NotebookApp.port_retries=0
+    volumes:
+      - .:/home/jovyan/notebook-course

@@ -1,0 +1,129 @@
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{naturalnames}{hyperref}
+
+\documentclass[12pt]{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+\setbeamertemplate{frametitle continuation}[from second][\insertcontinuationtext]
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{positioning,backgrounds}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{iwona}
+\usepackage{marvosym}
+%\usepackage{cfr-lm}
+%\usepackage{pifont}
+%\usepackage{keystroke}
+\usepackage{etoolbox}
+
+%
+% Listados de código
+%
+\lstset{%
+basicstyle=\ttfamily\footnotesize,
+commentstyle=\color{gray}\itshape\ttfamily,
+keywordstyle=\color{blue!80}\bfseries\ttfamily,
+stringstyle = \color{gray},
+showstringspaces=false,
+frame=tblr, % single, tb, ltrb % boxed listings, en mayusculas = doble linea
+framerule=0pt,
+tabsize=4, % tabulador = 2 espacios
+captionpos=b,
+breaklines=true,
+%backgroundcolor=\color{white},
+numbers=left, numberstyle=\tiny, stepnumber=2, numbersep=10pt,
+xleftmargin=0.02\textwidth,
+xrightmargin=0.02\textwidth,
+language=java, % Por defecto
+literate={«}{{\guillemotleft}}1
+           {»}{{\guillemotright}}1
+           {é}{{\'e}}1
+           {í}{{\'i}}1
+           {ó}{{\'o}}1
+           {ú}{{\'u}}1
+           {á}{{\'a}}1
+           {ñ}{{\~n}}1
+           {Ñ}{{\~N}}1
+           {¿}{{?`}}1
+}
+
+
+%% Macros comunes
+\newcommand{\hide}[1]{}
+\newcommand{\ra}{$\rightarrow${}~{}}
+
+
+% \end{document}
+
+%%% Local variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% ispell-local-dictionary: "spanish"
+%%% fill-column: 75
+%%% TeX-parse-self: t
+%%% TeX-auto-save: t
+%%% End:
+%%% vim: expandtab shiftwidth=2 tabstop=2
