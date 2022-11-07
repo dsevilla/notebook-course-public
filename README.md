@@ -1,6 +1,6 @@
 # notebook-course
 
-![presentacion_0](sessions/s1/img/presentacion_0.png)
+![presentacion_0](https://raw.githubusercontent.com/dsevilla/notebook-course-public/main/s1/img/presentacion_0.png)
 
 # APLICACIÓN A LA DOCENCIA DE LOS NOTEBOOKS INTERACTIVOS
 
